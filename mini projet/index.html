@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création d'articles dynamiques</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .form-container button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #218838;
+        }
+
+        .article {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .article h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .article p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Générateur d'articles</h1>
+
+    <div class="form-container">
+        <h3>Ajouter un nouvel article</h3>
+        <form id="articleForm">
+            <label for="title">Titre</label>
+            <input type="text" id="title" name="title" placeholder="Entrez le titre de l'article" required>
+
+            <label for="address">Adresse</label>
+            <input type="text" id="address" name="address" placeholder="Entrez l'adresse" required>
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" placeholder="Entrez la description de l'article" rows="4" required></textarea>
+
+            <button type="submit">Ajouter l'article</button>
+        </form>
+    </div>
+
+    <div id="articles"></div>
+
+    <script>
+        // Fonction pour ajouter un article
+        function addArticle(title, address, description) {
+            // Créer un nouvel article
+            const article = document.createElement('div');
+            article.classList.add('article');
+            
+            // Ajouter le titre
+            const articleTitle = document.createElement('h2');
+            articleTitle.textContent = title;
+            article.appendChild(articleTitle);
+
+            // Ajouter l'adresse
+            const articleAddress = document.createElement('p');
+            articleAddress.textContent = 'Adresse: ' + address;
+            article.appendChild(articleAddress);
+
+            // Ajouter la description
+            const articleDescription = document.createElement('p');
+            articleDescription.textContent = description;
+            article.appendChild(articleDescription);
+
+            // Ajouter l'article au body
+            document.getElementById('articles').appendChild(article);
+        }
+
+        // Écouter la soumission du formulaire
+        document.getElementById('articleForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Empêcher le rechargement de la page
+            
+            // Récupérer les valeurs des champs du formulaire
+            const title = document.getElementById('title').value;
+            const address = document.getElementById('address').value;
+            const description = document.getElementById('description').value;
+
+            // Appeler la fonction pour ajouter un article
+            addArticle(title, address, description);
+
+            // Réinitialiser le formulaire
+            event.target.reset();
+        });
+    </script>
+</body>
+</html>
