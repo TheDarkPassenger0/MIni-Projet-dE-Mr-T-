@@ -20,3 +20,5 @@ Améliorations possibles :
 Ajouter une fonctionnalité de suppression des articles.
 Permettre de modifier un article après sa création.
 Ajouter une base de données pour persister les articles même après un rafraîchissement de la page (via un backend en PHP, Node.js, etc.).
+
+YOU CAN USE THE CODE HERE ---> https://www.w3schools.com/js/tryit.asp?filename=tryjs_myfirst
